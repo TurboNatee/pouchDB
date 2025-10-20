@@ -12,6 +12,11 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@ibm-cloud/cloudant": "^0.12.10",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "ibm-cloud-sdk-core": "^5.4.3",
     "pouchdb": "^9.0.0",
     "pouchdb-find": "^9.0.0"
   },

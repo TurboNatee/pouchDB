@@ -1,5 +1,9 @@
 const db = new PouchDB('missions_db');
 const remoteDB = new PouchDB('http://admin:mtu12345@127.0.0.1:5984/advanceddb_project');
+const remoteDB2 = new PouchDB('http://localhost:3000/advanceddb_project');
+
+
+
 
 const missionsList = document.getElementById('missionsList');
 const nameInput = document.getElementById('name');
@@ -93,5 +97,9 @@ addBtn.onclick = async () => {
 loadMissions();
 
 db.sync(remoteDB, { live: true, retry: true })
+  .on('change', () => loadMissions())
+  .on('error', err => console.error('Replication error:', err));
+
+db.sync(remoteDB2, { live: true, retry: true })
   .on('change', () => loadMissions())
   .on('error', err => console.error('Replication error:', err));
